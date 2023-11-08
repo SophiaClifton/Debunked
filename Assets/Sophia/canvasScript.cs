@@ -12,6 +12,7 @@ public class canvasScript : MonoBehaviour
     {
         // Calculate the canvas position in front of the player
         Vector3 canvasPosition = playerTransform.position + playerTransform.forward * distanceFromPlayer;
+        canvasPosition.y+=1;
         transform.position = canvasPosition;
 
         // Make the canvas face the same direction as the player

@@ -14,8 +14,8 @@ public class PlayerCam : MonoBehaviour
     void Start()
     {
         // Invisible cursor to the middle of the screen
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
 
         CanvasScript = Canvas.GetComponent<canvasScript>();
     }
@@ -33,16 +33,18 @@ public class PlayerCam : MonoBehaviour
             x = Input.GetAxis("Mouse X"),
             y = Input.GetAxis("Mouse Y")
         };
-        if(!paused)
-        {
-            //Debug.Log(paused);
-            xyRotation.x -= MouseInput.y * sensitivity.y;
-            xyRotation.y += MouseInput.x * sensitivity.x;
+        
+            if(true)
+            {
+                //Debug.Log(paused);
+                xyRotation.x -= MouseInput.y * sensitivity.y;
+                xyRotation.y += MouseInput.x * sensitivity.x;
 
-            xyRotation.x = Mathf.Clamp(xyRotation.x, -90f, 90f);
+                xyRotation.x = Mathf.Clamp(xyRotation.x, -90f, 90f);
 
-            transform.eulerAngles = new Vector3(0f, xyRotation.y, 0f);
-            playerCam.localEulerAngles = new Vector3(xyRotation.x, 0f, 0f); 
-        }
+                transform.eulerAngles = new Vector3(0f, xyRotation.y, 0f);
+                playerCam.localEulerAngles = new Vector3(xyRotation.x, 0f, 0f); 
+            }
+        
     }
 }
