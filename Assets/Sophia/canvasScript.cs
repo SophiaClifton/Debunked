@@ -22,6 +22,7 @@ public class canvasScript : MonoBehaviour
             paused = false;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
+            Cursor.visible = false;
         }
 
         else if (Input.GetKeyDown(KeyCode.Escape) && !paused)
@@ -29,6 +30,7 @@ public class canvasScript : MonoBehaviour
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
             paused=true;
+            Cursor.visible = true;
         }
     }
 }

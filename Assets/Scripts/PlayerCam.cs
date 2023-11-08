@@ -15,7 +15,7 @@ public class PlayerCam : MonoBehaviour
     {
         // Invisible cursor to the middle of the screen
         //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
+        Cursor.visible = false;
 
         CanvasScript = Canvas.GetComponent<canvasScript>();
     }

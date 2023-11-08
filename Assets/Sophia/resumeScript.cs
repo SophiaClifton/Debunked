@@ -17,5 +17,6 @@ public class resumeScript : MonoBehaviour
         pauseMenu.SetActive(false);
         CanvasScript.paused=false;
         Time.timeScale = 1f;
+        Cursor.visible = false;
     }
 }
