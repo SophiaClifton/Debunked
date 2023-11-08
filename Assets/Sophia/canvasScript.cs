@@ -5,14 +5,13 @@ using UnityEngine;
 public class canvasScript : MonoBehaviour
 {
     public Transform playerTransform;
-    public float distanceFromPlayer = 2.0f;
+    public float distanceFromPlayer = 0.5f;
     public GameObject pauseMenu;
     public bool paused = false;
     void Update()
     {
         // Calculate the canvas position in front of the player
         Vector3 canvasPosition = playerTransform.position + playerTransform.forward * distanceFromPlayer;
-        canvasPosition.y+=1;
         transform.position = canvasPosition;
 
         // Make the canvas face the same direction as the player
