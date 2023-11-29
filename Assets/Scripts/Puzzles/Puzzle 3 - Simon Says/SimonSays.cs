@@ -8,6 +8,10 @@ public class SimonSays : MonoBehaviour
 
     public AudioSource correctSound;
     public AudioSource incorrectSound;
+    public AudioSource redSound;
+    public AudioSource yellowSound;
+    public AudioSource greenSound;
+    public AudioSource blueSound;
 
     int level = 0;
     int buttonClicks = 0;
@@ -55,18 +59,17 @@ public class SimonSays : MonoBehaviour
     {
         buttonClicks = 0;
         colorOrderRunCount++;
-        Debug.Log("Wait!");
         yield return new WaitForSeconds(2.5f);
-        Debug.Log("Go!");
 
         // Loop through the color sequence and flash each color
         for (int i = 0; i <= colorOrderRunCount; i++)
         {
             if (level >= colorOrderRunCount)
             {
-                Debug.Log("Flash: " + i);
+                //Debug.Log("Flash: " + i);
                 yield return new WaitForSeconds(0.75f);
                 Buttons[ColorOrder[i]].GetComponent<Image>().color = ButtonColorsFlash[ColorOrder[i]];
+                PlayButtonSound(ColorOrder[i]);
                 yield return new WaitForSeconds(1f);
                 Buttons[ColorOrder[i]].GetComponent<Image>().color = ButtonColors[ColorOrder[i]];
             }
@@ -79,13 +82,14 @@ public class SimonSays : MonoBehaviour
         buttonClicks++;
         if (button == ColorOrder[buttonClicks - 1])
         {
-            Debug.Log("Correct button");
+            //Debug.Log("Correct button");
             correct = true;
-            correctSound.Play();
+            PlayButtonSound(button); 
+
         } 
         else
         {
-            Debug.Log("Incorrect button");
+            //Debug.Log("Incorrect button");
             correct = false;
             incorrectSound.Play();
             StartCoroutine(ColorBlink(red)); // Display sequence call happens in here
@@ -101,16 +105,19 @@ public class SimonSays : MonoBehaviour
         // If succeeded current sequence, continue to next sequence
         if (buttonClicks == level && correct == true && buttonClicks != 5)
         {
+            
             Debug.Log("Succeeded current sequence! Next one...");
             correct = false;
             LevelLights[level - 1].GetComponent<Image>().color = transparent; // Sets level light active to show successes
             level++;
+            correctSound.Play(); 
             StartCoroutine(DisplaySequence());
         }
 
         // If succeeded current sequence and this is the last (fifth) sequence
         if (buttonClicks == level && correct == true && buttonClicks == 5)
         {
+            correctSound.Play();
             Debug.Log("You win!!!");
             win = true;
             StartCoroutine(ColorBlink(green));
@@ -175,6 +182,27 @@ public class SimonSays : MonoBehaviour
             Buttons[k].GetComponent<Button>().enabled = true;
         }
     }
+
+
+    void PlayButtonSound(int button)
+    {
+        switch (button)
+        {
+            case 0:
+                redSound.Play(); 
+                break;
+            case 1: 
+                yellowSound.Play();
+                break;
+            case 2:
+                greenSound.Play();
+                break;
+            case 3:
+                blueSound.Play();
+                break;
+        }
+    }
+
 }
 
 
