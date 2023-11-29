@@ -279,6 +279,7 @@ public class puzzle2 : MonoBehaviour
                 correctSound.Play();
                 StateNameConptroller.p2Solved = true;
                 StateNameConptroller.p2Correct = true;
+                StateNameConptroller.correctlySolved += 1;
                 denied.SetActive(false);
                 granted.SetActive(true);
             }
