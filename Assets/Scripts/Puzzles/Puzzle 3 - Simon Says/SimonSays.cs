@@ -77,11 +77,13 @@ public class SimonSays : MonoBehaviour
         {
             Debug.Log("Correct button");
             correct = true;
-        }
+            correctSound.Play();
+        } 
         else
         {
             Debug.Log("Incorrect button");
             correct = false;
+            incorrectSound.Play();
             StartCoroutine(ColorBlink(red)); // Display sequence call happens in here
 
             ChanceLights[strikes].GetComponent<Image>().color = transparent;
@@ -145,12 +147,16 @@ public class SimonSays : MonoBehaviour
         {
             // Win 
             Panel.SetActive(false);
+            StateNameConptroller.p3Solved = true;
+            StateNameConptroller.p3Correct = true;
+            StateNameConptroller.correctlySolved += 1;
             StateNameConptroller.isPaused = false;
         }
         else if (strikes == 3)
         {
             // 3 strikes, close panel
             Panel.SetActive(false);
+            StateNameConptroller.p3Solved = true;
             StateNameConptroller.isPaused = false;
         }
         else

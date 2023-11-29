@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class StateNameConptroller : MonoBehaviour
 {
-    //Button puzzle
-    
-    public static bool p1Solved = false;
-    public static bool b1 = false;
-    public static bool b2 = false;
-    public static bool b3 = false;
-    public static bool doOnce = false;
-    
+    //Puzzle correct count
+    public static int correctlySolved = 0;
 
     //Sarah puzzle
-    //public static bool p1Solved = false;
-    public static int count = 0;
+    public static bool p1Solved = false;
+    public static bool p1Correct = false;
+    public static int p1tries= 0;
+    public static bool doOnce = false;
 
-    //Sophia buzzle
+    //Sophia puzzle
     public static bool p2Solved = false;
+    public static bool p2Correct = false;
+    public static int p2tries = 0;
     public static bool redPressed = false;
     public static bool bluePressed = false;
     public static bool yellowPressed = false;
@@ -40,12 +38,16 @@ public class StateNameConptroller : MonoBehaviour
     public static string button5 = "";
 
     //Hanae puzzle
+    public static bool p3Solved = false;
+    public static bool p3Correct = false;
     public static bool simonSaysPressed = false;
 
     //Crosshair
     public static bool isPaused = false;
 
-    //Keypad puzzle
+    //Fabio puzzle
+    public static bool p4Solved = false;
+    public static bool p4Correct = false;
     public static string pass = "2614";
     public static string currentPass = "";
     public static bool keypadPuzzleSolved = false;
