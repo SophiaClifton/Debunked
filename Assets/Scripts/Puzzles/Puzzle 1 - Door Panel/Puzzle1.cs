@@ -19,6 +19,7 @@ public class Puzzle1 : MonoBehaviour
                 doorSound.Play();
                 StateNameConptroller.p1Solved = true;
                 StateNameConptroller.p1Correct = true;
+                StateNameConptroller.correctlySolved += 1;
             }
             else
             {
