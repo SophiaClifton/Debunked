@@ -96,6 +96,7 @@ public class SimonSays : MonoBehaviour
 
             if (strikes == 3)
             {
+                StateNameConptroller.p3Solved = true;
                 Panel.SetActive(false);
             } else
             {
@@ -119,6 +120,8 @@ public class SimonSays : MonoBehaviour
         {
             Debug.Log("You win!!!");
             win = true;
+            StateNameConptroller.p3Solved = true;
+            StateNameConptroller.p3Correct = true;
             StartCoroutine(ColorBlink(green));
         }
     }

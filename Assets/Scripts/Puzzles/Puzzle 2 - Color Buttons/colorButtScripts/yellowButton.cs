@@ -62,7 +62,14 @@ public class yellowButton : MonoBehaviour, IInteractable
     }
     public void activateE()
     {
-        E.SetActive(true);
+        if(StateNameConptroller.p2tries == 3 || StateNameConptroller.p2Correct == true)
+        {
+            E.SetActive(false);
+        }
+        else
+        {
+            E.SetActive(true);
+        }
     }
 
     public void deactivateE()
