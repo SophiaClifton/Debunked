@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class SimonSays : MonoBehaviour
 {
+
+    public AudioSource correctSound;
+    public AudioSource incorrectSound;
+
     int level = 0;
     int buttonClicks = 0;
     int colorOrderRunCount = 0;
