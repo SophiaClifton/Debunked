@@ -31,7 +31,7 @@ public class PlayerCam : MonoBehaviour
         xyRotation.y += MouseInput.x * sensitivity.x;
 
         xyRotation.x = Mathf.Clamp(xyRotation.x, -90f, 90f);
-            if(!CanvasScript.paused)
+           /* if(!CanvasScript.paused)
             {
                 transform.eulerAngles = new Vector3(0f, xyRotation.y, 0f);
                 playerCam.localEulerAngles = new Vector3(xyRotation.x, 0f, 0f); 
@@ -54,17 +54,30 @@ public class PlayerCam : MonoBehaviour
                 playerCam.localEulerAngles = new Vector3(0f, 0f, 0f); 
                 StateNameConptroller.isPaused = true;
 
-            }
+            }*/
 
 
         
-        if (StateNameConptroller.isPaused)
+        if (!StateNameConptroller.isPaused)
         {
-            crosshair.SetActive(false);
+            crosshair.SetActive(true);
+
+            transform.eulerAngles = new Vector3(0f, xyRotation.y, 0f);
+            playerCam.localEulerAngles = new Vector3(xyRotation.x, 0f, 0f);
+
+
+            //Debug.Log(paused);
+            xyRotation.x -= MouseInput.y * sensitivity.y;
+            xyRotation.y += MouseInput.x * sensitivity.x;
+
+            xyRotation.x = Mathf.Clamp(xyRotation.x, -90f, 90f);
+
+            transform.eulerAngles = new Vector3(0f, xyRotation.y, 0f);
+            playerCam.localEulerAngles = new Vector3(xyRotation.x, 0f, 0f);
         }
         else
         {
-            crosshair.SetActive(true);
+            crosshair.SetActive(false); 
         }
 
 

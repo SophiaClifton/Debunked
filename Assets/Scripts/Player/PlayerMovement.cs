@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-        if (!CanvasScript.paused)
+        if (!StateNameConptroller.isPaused)
         {
 
             horizontal = Input.GetAxisRaw("Horizontal");
