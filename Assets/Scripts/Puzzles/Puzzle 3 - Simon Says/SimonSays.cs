@@ -152,6 +152,7 @@ public class SimonSays : MonoBehaviour
             Panel.SetActive(false);
             StateNameConptroller.p3Solved = true;
             StateNameConptroller.p3Correct = true;
+            StateNameConptroller.correctlySolved += 1;
             StateNameConptroller.isPaused = false;
         }
         else if (strikes == 3)
