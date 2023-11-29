@@ -81,28 +81,20 @@ public class SimonSays : MonoBehaviour
             Debug.Log("Correct button");
             correct = true;
             correctSound.Play();
-        } else
+        } 
+        else
         {
             Debug.Log("Incorrect button"); 
             correct = false;
             incorrectSound.Play();
             StartCoroutine(ColorBlink(red));
+
             ChanceLights[strikes].GetComponent<Image>().color = red;
             
             // Reset values
             colorOrderRunCount = -1;
             strikes++;
             level = 1;
-
-            if (strikes == 3)
-            {
-                StateNameConptroller.p3Solved = true;
-                Panel.SetActive(false);
-            } else
-            {
-                StartCoroutine(DisplaySequence());
-            }
-
         }
 
         // If succeeded current sequence, continue to next sequence
@@ -120,16 +112,21 @@ public class SimonSays : MonoBehaviour
         {
             Debug.Log("You win!!!");
             win = true;
-            StateNameConptroller.p3Solved = true;
-            StateNameConptroller.p3Correct = true;
             StartCoroutine(ColorBlink(green));
         }
     }
 
-    // All buttons blink if getting sequence wrong or complete puzzle
+    // All buttons blink if getting sequence wrong or if successfully completing puzzle
     IEnumerator ColorBlink(Color color)
     {
-        yield return new WaitForSeconds(.25f); 
+        // Disable button clicks while blinking
+        for (int k = 0; k < Buttons.Length; k++)
+        {
+            Buttons[k].GetComponent<Button>().enabled = false;
+        }
+
+        yield return new WaitForSeconds(.25f);
+
         // Blink 3 times
         for (int j = 0; j < 3; j++)
         {
@@ -146,16 +143,34 @@ public class SimonSays : MonoBehaviour
             for (int i = 0; i < LevelLights.Length; i++)
                 LevelLights[i].GetComponent<Image>().color = white;
 
-            yield return new WaitForSeconds(.5f); 
+            yield return new WaitForSeconds(.5f);
         }
 
-        if (win == true )
+        if (win == true)
         {
             // Win 
-            Panel.SetActive(false); 
+            Panel.SetActive(false);
+            StateNameConptroller.p3Solved = true;
+            StateNameConptroller.p3Correct = true;
+            StateNameConptroller.isPaused = false;
+        }
+        else if (strikes == 3)
+        {
+            // 3 strikes, close panel
+            Panel.SetActive(false);
+            StateNameConptroller.p3Solved = true;
+            StateNameConptroller.isPaused = false;
+        }
+        else
+        {
+            // Less than 3 strikes, continue
+            StartCoroutine(DisplaySequence());
+        }
+
+        // Re-enable buttons
+        for (int k = 0; k < Buttons.Length; k++)
+        {
+            Buttons[k].GetComponent<Button>().enabled = true;
         }
     }
-
-
-
 }
