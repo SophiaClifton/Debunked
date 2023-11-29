@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StateNameConptroller : MonoBehaviour
 {
+    //Puzzle correct count
+    public static int correctlySolved = 0;
+
     //Sarah puzzle
     public static bool p1Solved = false;
     public static bool p1Correct = false;
