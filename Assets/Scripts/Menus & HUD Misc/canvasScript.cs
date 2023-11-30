@@ -13,7 +13,7 @@ public class canvasScript : MonoBehaviour
     public int playerHeight = 1;
     void Update()
     {
-        /*
+        
         // Calculate the canvas position in front of the player
         Vector3 canvasPosition = playerTransform.position + playerTransform.forward * distanceFromPlayer;
         canvasPosition.y += playerHeight;
@@ -50,7 +50,7 @@ public class canvasScript : MonoBehaviour
         {
             //Cursor.visible = false;
             //paused = false;
-        }*/
+        }
         
     }
         

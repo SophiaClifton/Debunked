@@ -9,14 +9,14 @@ public class GameCompleted : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (StateNameConptroller.p4Solved && StateNameConptroller.p4Correct)
+            if (StateNameConptroller.correctlySolved >= 2 && StateNameConptroller.p1Solved && StateNameConptroller.p2Solved && StateNameConptroller.p3Solved && StateNameConptroller.p4Solved)
             {
-                SceneManager.LoadScene("GoodEnd");
+                SceneManager.LoadScene("MainMenu");
             }
 
-            else if (StateNameConptroller.p4Solved && !StateNameConptroller.p4Correct )
+            else if (StateNameConptroller.correctlySolved < 2 && StateNameConptroller.p1Solved && StateNameConptroller.p2Solved && StateNameConptroller.p3Solved && StateNameConptroller.p4Solved)
             {
-                SceneManager.LoadScene("BadEnd");
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }
