@@ -48,8 +48,8 @@ public class StateNameConptroller : MonoBehaviour
     //Fabio puzzle
     public static bool p4Solved = false;
     public static bool p4Correct = false;
+    public static int p4tries = 0;
     public static string pass = "2614";
     public static string currentPass = "";
-    public static bool keypadPuzzleSolved = false;
 
 }
