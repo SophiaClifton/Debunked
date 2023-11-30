@@ -162,6 +162,7 @@ public class SimonSays : MonoBehaviour
             StateNameConptroller.p3Correct = true;
             StateNameConptroller.correctlySolved += 1;
             StateNameConptroller.isPaused = false;
+            StateNameConptroller.simonSaysPressed = false;
         }
         else if (strikes == 3)
         {
@@ -169,6 +170,7 @@ public class SimonSays : MonoBehaviour
             Panel.SetActive(false);
             StateNameConptroller.p3Solved = true;
             StateNameConptroller.isPaused = false;
+            StateNameConptroller.simonSaysPressed = false;
         }
         else
         {

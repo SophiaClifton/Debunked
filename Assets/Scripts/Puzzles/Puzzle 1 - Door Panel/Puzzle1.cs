@@ -19,6 +19,7 @@ public class Puzzle1 : MonoBehaviour
                 doorSound.Play();
                 StateNameConptroller.p1Solved = true;
                 StateNameConptroller.p1Correct = true;
+                StateNameConptroller.p1Open = false;
                 StateNameConptroller.correctlySolved += 1;
             }
             else
@@ -31,6 +32,7 @@ public class Puzzle1 : MonoBehaviour
         if(StateNameConptroller.p1tries == 3)
         {
             StateNameConptroller.p1Solved = true;
+            StateNameConptroller.p1Open = false;
         }
     }
 }

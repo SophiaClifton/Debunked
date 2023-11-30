@@ -12,6 +12,7 @@ public class StateNameConptroller : MonoBehaviour
     public static bool p1Correct = false;
     public static int p1tries= 0;
     public static bool doOnce = false;
+    public static bool p1Open = false;
 
     //Sophia puzzle
     public static bool p2Solved = false;

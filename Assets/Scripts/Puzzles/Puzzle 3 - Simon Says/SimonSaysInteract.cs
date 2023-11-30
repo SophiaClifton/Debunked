@@ -22,7 +22,7 @@ public class SimonSaysInteract : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!StateNameConptroller.simonSaysPressed)
+        if (!StateNameConptroller.simonSaysPressed && !StateNameConptroller.p3Solved) 
         {
             Debug.Log("Simon Says computer pressed"); 
             StateNameConptroller.simonSaysPressed = true;
